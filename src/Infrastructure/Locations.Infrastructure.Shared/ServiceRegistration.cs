@@ -10,7 +10,7 @@ namespace Locations.Infrastructure.Shared
     {
         public static void AddSharedInfrastructure(this IServiceCollection services, IConfiguration _config)
         {
-            services.AddTransient<INearestLocationsFinderService, NearestLocationsFinderService>();
+            services.AddTransient<INearestLocationsFinderService, NearestLocationsFinderServiceV2>();
         }
     }
 }
