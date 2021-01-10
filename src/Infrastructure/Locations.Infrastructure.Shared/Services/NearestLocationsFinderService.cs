@@ -27,7 +27,7 @@ namespace Locations.Infrastructure.Shared.Services
 
             var startLoc = new Location(startingLocation.Latitude, startingLocation.Longitude);
 
-            // Time complexity depends on the size of M. Worst case if M is big then TC=O(M log M), else O(N)
+            // Time complexity depends on the size of M. Worst case if M is big then TC=O(M log M), else Omega(N)
             var res = allLocations
                 .Select(l => new LocationWithDistanceFromStartingPoint(l, l.CalculateDistance(startLoc))) // Select: O(N)
                 .Where(l => l.DistanceFromStartingPoint <= maxDistance) // Where: O(N)
