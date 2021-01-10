@@ -27,12 +27,14 @@ namespace Locations.Infrastructure.Shared.Services
 
             var startLoc = new Location(startingLocation.Latitude, startingLocation.Longitude);
 
-            // Time complexity depends on the size of M. Worst case if M is big then TC=O(M log M), else Omega(N)
+            // Time complexity is the same as sequential run, but this will improve the overall time.
             var res = allLocations
+                .AsParallel()
                 .Select(l => new LocationWithDistanceFromStartingPoint(l, l.CalculateDistance(startLoc))) // Select: O(N)
                 .Where(l => l.DistanceFromStartingPoint <= maxDistance) // Where: O(N)
                 .OrderBy(l => l.DistanceFromStartingPoint) //O(M log M)
-                .Take(maxResults); // Take: O(M)
+                .Take(maxResults)
+                .ToList(); // Take: O(M)
 
             return res;
         }
