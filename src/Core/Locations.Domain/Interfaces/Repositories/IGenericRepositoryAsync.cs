@@ -9,6 +9,8 @@ namespace Locations.Core.Domain.Interfaces.Repositories
 
         Task<IReadOnlyList<T>> GetAllAsync();
 
+        IReadOnlyList<T> GetAll();
+
         Task<T> AddAsync(T entity);
 
         Task UpdateAsync(T entity);

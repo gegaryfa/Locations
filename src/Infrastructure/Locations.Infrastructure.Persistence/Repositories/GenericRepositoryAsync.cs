@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Locations.Core.Domain.Interfaces.Repositories;
@@ -47,6 +48,13 @@ namespace Locations.Infrastructure.Persistence.Repositories
             return await _dbContext
                  .Set<T>()
                  .ToListAsync();
+        }
+
+        public IReadOnlyList<T> GetAll()
+        {
+            return _dbContext
+                .Set<T>()
+                .ToList();
         }
     }
 }
