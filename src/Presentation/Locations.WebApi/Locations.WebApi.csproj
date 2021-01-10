@@ -37,4 +37,14 @@
     <ProjectReference Include="..\..\Infrastructure\Locations.Infrastructure.Shared\Locations.Infrastructure.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TestData\Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TestData\Data\locations.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

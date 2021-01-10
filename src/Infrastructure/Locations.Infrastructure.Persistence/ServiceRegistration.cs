@@ -1,7 +1,7 @@
-﻿using Locations.Core.Application.Interfaces;
-using Locations.Core.Application.Interfaces.Repositories;
+﻿using Locations.Core.Domain.Interfaces.Repositories;
 using Locations.Infrastructure.Persistence.Contexts;
 using Locations.Infrastructure.Persistence.Repositories;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,9 +24,10 @@ namespace Locations.Infrastructure.Persistence
                    configuration.GetConnectionString("DefaultConnection"),
                    b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
             }
+
             #region Repositories
             services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
-            services.AddTransient<IProductRepositoryAsync, ProductRepositoryAsync>();
+            services.AddTransient<ILocationsRepositoryAsync, LocationsRepositoryAsync>();
             #endregion
         }
     }

@@ -17,8 +17,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Locations.Domain\Locations.Core.Domain.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Behaviours\" />
-  </ItemGroup>
 
 </Project>

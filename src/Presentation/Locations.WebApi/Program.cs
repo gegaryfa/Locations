@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
 
+using Locations.WebApi.TestData;
+
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,15 +18,19 @@ namespace Locations.WebApi
         public static async Task Main(string[] args)
         {
             //Read Configuration from appSettings
+            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             var config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
+                .AddJsonFile($"appsettings.{environment}.json", optional: true)
                 .Build();
 
             //Initialize Logger
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(config)
                 .CreateLogger();
+
             var host = CreateHostBuilder(args).Build();
+
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
@@ -32,6 +38,11 @@ namespace Locations.WebApi
                 try
                 {
                     //seed db with data
+                    if (config.GetValue<bool>("UseInMemoryDatabase"))
+                    {
+                        // Call the DataGenerator to create sample data
+                        await DataGenerator.InitializeInMemoryDb(services);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -42,8 +53,10 @@ namespace Locations.WebApi
                     Log.CloseAndFlush();
                 }
             }
+
             await host.RunAsync();
         }
+
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
             .UseSerilog() //Uses Serilog instead of default .NET Logger

@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Locations.Core.Application.Interfaces;
+
+using Locations.Core.Domain.Interfaces.Repositories;
 using Locations.Infrastructure.Persistence.Contexts;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Locations.Infrastructure.Persistence.Repositories
@@ -21,15 +22,6 @@ namespace Locations.Infrastructure.Persistence.Repositories
             return await _dbContext.Set<T>().FindAsync(id);
         }
 
-        public async Task<IReadOnlyList<T>> GetPagedReponseAsync(int pageNumber, int pageSize)
-        {
-            return await _dbContext
-                .Set<T>()
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .AsNoTracking()
-                .ToListAsync();
-        }
 
         public async Task<T> AddAsync(T entity)
         {

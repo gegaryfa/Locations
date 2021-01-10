@@ -1,4 +1,5 @@
 ﻿using Locations.WebApi.Middlewares;
+
 using Microsoft.AspNetCore.Builder;
 
 namespace Locations.WebApi.Extensions
@@ -10,7 +11,8 @@ namespace Locations.WebApi.Extensions
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "CleanArchitecture.Locations.WebApi");
+                c.DisplayRequestDuration();
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Locations.WebApi");
             });
         }
         public static void UseErrorHandlingMiddleware(this IApplicationBuilder app)
