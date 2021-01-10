@@ -9,6 +9,8 @@
     <ProjectReference Include="..\..\Core\Locations.Application\Locations.Core.Application.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="KdTree" Version="1.4.1" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="5.0.0" />
+    <PackageReference Include="RBush" Version="2.0.46" />
   </ItemGroup>
 </Project>
