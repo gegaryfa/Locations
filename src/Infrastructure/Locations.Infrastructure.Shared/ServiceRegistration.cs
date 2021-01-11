@@ -11,7 +11,9 @@ namespace Locations.Infrastructure.Shared
     {
         public static void AddSharedInfrastructure(this IServiceCollection services, IConfiguration _config)
         {
-            services.AddTransient<INearestLocationsFinderService, NearestLocationsFinderServiceV2>();
+            //services.AddTransient<INearestLocationsFinderService, NearestLocationsFinderServiceV1>();
+            //services.AddTransient<INearestLocationsFinderService, NearestLocationsFinderServiceV2>();
+            services.AddTransient<INearestLocationsFinderService, NearestLocationsFinderServiceV3>();
             services.AddSingleton<ILocationsKdTree, LocationsKdTree>();
         }
     }

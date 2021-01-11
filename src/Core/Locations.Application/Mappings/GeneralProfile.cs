@@ -15,7 +15,6 @@ namespace Locations.Core.Application.Mappings
             CreateMap<Location, GetAllLocationsViewModel>().ReverseMap();
             CreateMap<LocationWithDistanceFromStartingPoint, GetNearestLocationsViewModel>().ReverseMap();
             CreateMap<CreateLocationCommand, Location>();
-            CreateMap<GetAllLocationsQuery, GetAllLocationsParameters>();
         }
     }
 }

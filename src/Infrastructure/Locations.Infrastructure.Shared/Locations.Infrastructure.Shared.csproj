@@ -9,6 +9,7 @@
     <ProjectReference Include="..\..\Core\Locations.Application\Locations.Core.Application.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Ensure.That" Version="9.2.0" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="5.0.0" />
     <PackageReference Include="Supercluster.KDTree" Version="1.0.4" />
   </ItemGroup>

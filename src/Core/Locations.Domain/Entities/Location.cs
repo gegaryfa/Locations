@@ -4,7 +4,6 @@ namespace Locations.Core.Domain.Entities
 {
     public class Location
     {
-        // todo make this a guid ?
         public int Id { get; set; }
         public string Address { get; set; }
         public double Latitude { get; set; }
