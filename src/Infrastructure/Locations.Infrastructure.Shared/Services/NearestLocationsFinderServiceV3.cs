@@ -23,6 +23,14 @@ namespace Locations.Infrastructure.Shared.Services
             _locationsKdTree = locationsKdTree;
         }
 
+        /// <summary>
+        /// Find the K nearest neighbors.
+        /// O(K logN)
+        /// </summary>
+        /// <param name="startingLocation"></param>
+        /// <param name="maxDistance"></param>
+        /// <param name="maxResults"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<LocationWithDistanceFromStartingPoint>> GetNearestLocations(StartingLocation startingLocation, int maxDistance, int maxResults)
         {
             EnsureArg.IsNotNull(startingLocation, nameof(startingLocation));
