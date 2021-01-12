@@ -1,6 +1,7 @@
 using Locations.Core.Application;
 using Locations.Infrastructure.Persistence;
 using Locations.Infrastructure.Shared;
+using Locations.Infrastructure.Shared.DataStructures.Trees;
 using Locations.WebApi.Extensions;
 
 using Microsoft.AspNetCore.Builder;
@@ -51,6 +52,11 @@ namespace Locations.WebApi
              {
                  endpoints.MapControllers();
              });
+
+            // This call initializes the singleton service that contains the kdTree.
+            // The purpose of this call here is to build the tree during startup.
+            // In a production scenario this could be part of a background job.
+            app.ApplicationServices.GetService<ILocationsKdTree>();
         }
     }
 }

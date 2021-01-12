@@ -2,25 +2,33 @@
 using System.Linq;
 using System.Threading.Tasks;
 
+using EnsureThat;
+
+using Locations.Core.Application.DTOs;
 using Locations.Core.Application.Features.Locations.Queries.GetNearestLocations;
 using Locations.Core.Application.Interfaces.Services;
-using Locations.Core.Application.Models;
 using Locations.Core.Domain.Entities;
 using Locations.Core.Domain.Interfaces.Repositories;
 
 namespace Locations.Infrastructure.Shared.Services
 {
-    public class NearestLocationsFinderService : INearestLocationsFinderService
+    public class NearestLocationsFinderServiceV1 : INearestLocationsFinderService
     {
         private readonly ILocationsRepositoryAsync _locationsRepository;
 
-        public NearestLocationsFinderService(ILocationsRepositoryAsync locationsRepository)
+        public NearestLocationsFinderServiceV1(ILocationsRepositoryAsync locationsRepository)
         {
+            EnsureArg.IsNotNull(locationsRepository, nameof(locationsRepository));
+
             _locationsRepository = locationsRepository;
         }
 
         public async Task<IEnumerable<LocationWithDistanceFromStartingPoint>> GetNearestLocations(StartingLocation startingLocation, int maxDistance, int maxResults)
         {
+            EnsureArg.IsNotNull(startingLocation, nameof(startingLocation));
+            EnsureArg.IsGte(maxDistance, 0, nameof(maxDistance));
+            EnsureArg.IsGt(maxResults, 0, nameof(maxResults));
+
             // In the case of an actual database with lots of records, we can use caching to save time when 
             // fetching al the records.
             var allLocations = await _locationsRepository.GetAllAsync();

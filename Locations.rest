@@ -1,0 +1,15 @@
+
+@url = http://localhost:57712/api/v1  
+@Latitude = 50.91414
+@Longitude = 5.95549
+@MaxDistance = 10000 
+@MaxResults = 50
+
+### Get nearest locations
+GET {{url}}/Locations/getNearestLocations?Location.Latitude={{Latitude}}&Location.Longitude={{Longitude}}&MaxDistance={{MaxDistance}}&MaxResults={{MaxResults}}
+
+
+@PageNumber = 1
+@PageSize = 10
+### Get all locations [with paging]
+GET {{url}}/Locations?PageNumber={{PageNumber}}&PageSize={{{{PageSize}}}}

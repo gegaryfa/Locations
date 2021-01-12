@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 
 using AutoMapper;
 
+using EnsureThat;
+
 using Locations.Core.Application.Interfaces.Services;
 
 using MediatR;
@@ -25,6 +27,9 @@ namespace Locations.Core.Application.Features.Locations.Queries.GetNearestLocati
         private readonly IMapper _mapper;
         public GetAllLocationsQueryHandler(INearestLocationsFinderService nearestLocationsFinderService, IMapper mapper)
         {
+            EnsureArg.IsNotNull(nearestLocationsFinderService, nameof(nearestLocationsFinderService));
+            EnsureArg.IsNotNull(mapper, nameof(mapper));
+
             _nearestLocationsFinderService = nearestLocationsFinderService;
             _mapper = mapper;
         }
