@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FakeItEasy" Version="6.2.1" />
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
@@ -20,7 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Core\Locations.Domain\Locations.Core.Domain.csproj" />
-    <ProjectReference Include="..\..\..\src\Infrastructure\Locations.Infrastructure.Shared\Locations.Infrastructure.Shared.csproj" />
   </ItemGroup>
 
 </Project>

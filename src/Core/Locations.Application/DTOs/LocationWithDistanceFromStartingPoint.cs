@@ -1,6 +1,6 @@
 ﻿using Locations.Core.Domain.Entities;
 
-namespace Locations.Core.Application.Models
+namespace Locations.Core.Application.DTOs
 {
     public class LocationWithDistanceFromStartingPoint
     {

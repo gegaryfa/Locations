@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 using EnsureThat;
 
+using Locations.Core.Application.DTOs;
 using Locations.Core.Application.Features.Locations.Queries.GetNearestLocations;
 using Locations.Core.Application.Interfaces.Services;
-using Locations.Core.Application.Models;
 using Locations.Core.Domain.Entities;
 using Locations.Core.Domain.Interfaces.Repositories;
 
