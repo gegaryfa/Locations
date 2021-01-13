@@ -12,4 +12,4 @@ GET {{url}}/Locations/getNearestLocations?Location.Latitude={{Latitude}}&Locatio
 @PageNumber = 1
 @PageSize = 10
 ### Get all locations [with paging]
-GET {{url}}/Locations?PageNumber={{PageNumber}}&PageSize={{{{PageSize}}}}
+GET {{url}}/Locations?PageNumber={{PageNumber}}&PageSize={{PageSize}}
